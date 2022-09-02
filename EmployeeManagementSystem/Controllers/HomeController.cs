@@ -11,16 +11,14 @@ namespace EmployeeManagementSystem.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private IEmployeeRepository _employeeRepository;
+        public HomeController(IEmployeeRepository employeeRepository)
         {
-            _logger = logger;
+            _employeeRepository = employeeRepository;
         }
-
         public IActionResult Index()
         {
-            return View();
+            return View(_employeeRepository.GetAllEmployee());
         }
 
         public IActionResult Privacy()

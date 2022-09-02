@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\7th Semester\\Advance Web Development\\Asp.Net MVC Core\\Employee Management\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem.csproj": {}
+    "F:\\7th Semester\\Advance Web Development\\Asp.Net MVC Core\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem.csproj": {}
   },
   "projects": {
-    "F:\\7th Semester\\Advance Web Development\\Asp.Net MVC Core\\Employee Management\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem.csproj": {
+    "F:\\7th Semester\\Advance Web Development\\Asp.Net MVC Core\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\7th Semester\\Advance Web Development\\Asp.Net MVC Core\\Employee Management\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem.csproj",
+        "projectUniqueName": "F:\\7th Semester\\Advance Web Development\\Asp.Net MVC Core\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem.csproj",
         "projectName": "EmployeeManagementSystem",
-        "projectPath": "F:\\7th Semester\\Advance Web Development\\Asp.Net MVC Core\\Employee Management\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem.csproj",
+        "projectPath": "F:\\7th Semester\\Advance Web Development\\Asp.Net MVC Core\\EmployeeManagementSystem\\EmployeeManagementSystem\\EmployeeManagementSystem.csproj",
         "packagesPath": "C:\\Users\\Abdurrahman\\.nuget\\packages\\",
-        "outputPath": "F:\\7th Semester\\Advance Web Development\\Asp.Net MVC Core\\Employee Management\\EmployeeManagementSystem\\EmployeeManagementSystem\\obj\\",
+        "outputPath": "F:\\7th Semester\\Advance Web Development\\Asp.Net MVC Core\\EmployeeManagementSystem\\EmployeeManagementSystem\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Abdurrahman\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -9,6 +9,7 @@ using EmployeeManagementSystem.Models;
 
 namespace EmployeeManagementSystem.Controllers
 {
+
     public class HomeController : Controller
     {
         private IEmployeeRepository _employeeRepository;
@@ -20,11 +21,25 @@ namespace EmployeeManagementSystem.Controllers
         {
             return View(_employeeRepository.GetAllEmployee());
         }
-
-        public IActionResult Privacy()
+        //GET Create
+        [HttpGet] 
+        public IActionResult Create()
         {
             return View();
         }
+        //POST Create
+        [HttpPost] 
+        public IActionResult Create(Employee employee)
+        {
+            return RedirectToAction("Details",new { id = _employeeRepository.Add(employee).Id});
+        }
+
+
+        public IActionResult Details(int? id)
+        {
+            return View(_employeeRepository.GetEmployee(id??1));
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

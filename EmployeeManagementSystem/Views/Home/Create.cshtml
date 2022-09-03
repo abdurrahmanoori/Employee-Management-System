@@ -1,8 +1,10 @@
 ﻿@model EmployeeManagementSystem.Models.Employee
+@*@inject IEmployeeRepository _empRepository*@
+@inject EmployeeManagementSystem.Models.IEmployeeRepository _empRepository
+
 @{
     ViewData["Title"] = "Create";
 }
-
 <h1>Create</h1>
 
 <form asp-controller="Home" asp-action="Create" method="post">
@@ -20,5 +22,8 @@
     </div>
     <div class="form-group">
         <button class="btn btn-primary">Create</button>
+    </div>
+    <div class="form-group">
+        <p>Total Number of Employee @_empRepository.GetAllEmployee().Count()</p>
     </div>
 </form>

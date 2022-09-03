@@ -31,10 +31,10 @@ namespace EmployeeManagementSystem.Controllers
         [HttpPost] 
         public IActionResult Create(Employee employee)
         {
-            return RedirectToAction("Details",new { id = _employeeRepository.Add(employee).Id});
+            _employeeRepository.Add(employee);
+            return View();
+            //return RedirectToAction("Details",new { id = _employeeRepository.Add(employee).Id});
         }
-
-
         public IActionResult Details(int? id)
         {
             return View(_employeeRepository.GetEmployee(id??1));

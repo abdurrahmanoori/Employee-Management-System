@@ -1,13 +1,10 @@
-﻿@model EmployeeManagementSystem.Models.Employee
-@*@inject IEmployeeRepository _empRepository*@
-@inject EmployeeManagementSystem.Models.IEmployeeRepository _empRepository
-
+﻿@model EmployeeManagementSystem.ViewModels.EmployeeCreateViewModel
 @{
     ViewData["Title"] = "Create";
 }
 <h1>Create</h1>
 
-<form asp-controller="Home" asp-action="Create" method="post">
+<form enctype="multipart/form-data" asp-controller="Home" asp-action="Create" method="post">
     <div class="form-group">
         <label asp-for="Name"></label>
         <input class="form-control" asp-for="Name" />
@@ -20,10 +17,37 @@
         <label asp-for="Department"></label>
         <select class="form-control" asp-for="Department" asp-items="Html.GetEnumSelectList<Dept>()"></select>
     </div>
+
     <div class="form-group">
-        <button class="btn btn-primary">Create</button>
+        <label>Photo</label>
+        <div class="custom-file">
+            <label class="custom-file-label">Choose File...</label>
+            <input class="form-control custom-file-input" type="file" name="file" />
+        </div>
+        @*<input type="file" id="uploadBox" name="file" />*@
     </div>
     <div class="form-group">
-        <p>Total Number of Employee @_empRepository.GetAllEmployee().Count()</p>
+        <button type="submit" class="btn btn-primary">Create</button>
     </div>
+    @*@section Scripts {
+        <script>
+            $(document).ready(function () {
+                $('.custom file-input').on("change", function () {
+                    var fileName = $(this).val().split("\\").pop();
+                    (this).next('custom-file-label').html(fileName);
+                });
+
+            });
+
+
+        </script>
+        }*@
 </form>
+
+@*@inject IEmployeeRepository _empRepository*@
+@*@inject EmployeeManagementSystem.Models.IEmployeeRepository _empRepository*@
+
+@*  <div class="form-group">
+        <p>Total Number of Employee @_empRepository.GetAllEmployee().Count()</p>
+    </div>*@
+

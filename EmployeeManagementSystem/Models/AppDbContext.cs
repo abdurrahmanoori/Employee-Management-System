@@ -13,11 +13,11 @@ namespace EmployeeManagementSystem.Models
 
         }
         public DbSet<Employee> Employees { get; set; }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Employee>().HasData(
-                new Employee { Id = 2, Name = "Layla", Email = "Layla@yahoo.com", Department = Dept.Payroll.ToString() }
-                );
-        }
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Employee>().HasData(
+        //        new Employee { Id = 2, Name = "Layla", Email = "Layla@yahoo.com", Department = Dept.Payroll }
+        //        );
+        //}
     }
 }

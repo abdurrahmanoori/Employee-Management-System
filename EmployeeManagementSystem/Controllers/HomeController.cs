@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using EmployeeManagementSystem.Models;
+using EmployeeManagementSystem.ViewModels;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace EmployeeManagementSystem.Controllers
 {
@@ -13,31 +17,59 @@ namespace EmployeeManagementSystem.Controllers
     public class HomeController : Controller
     {
         private IEmployeeRepository _employeeRepository;
-        public HomeController(IEmployeeRepository employeeRepository)
+        private readonly IWebHostEnvironment webHostEnvironment;
+
+        [Obsolete]
+        public HomeController(IEmployeeRepository employeeRepository, IWebHostEnvironment webHostEnvironment)
         {
             _employeeRepository = employeeRepository;
+            this.webHostEnvironment = webHostEnvironment;
         }
         public IActionResult Index()
         {
             return View(_employeeRepository.GetAllEmployee());
         }
         //GET Create
-        [HttpGet] 
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
-        //POST Create
-        [HttpPost] 
-        public IActionResult Create(Employee employee)
+        [HttpPost]
+        public IActionResult Create(EmployeeCreateViewModel model, IFormFile? file)
         {
-            _employeeRepository.Add(employee);
+            string wwwRootPath = webHostEnvironment.WebRootPath;
+            if (file != null)
+            {
+                string fileName = Guid.NewGuid().ToString();        // + "_" + file.FileName;
+                var uploads = Path.Combine(wwwRootPath, @"img");
+                var extenstion = Path.GetExtension(file.FileName);
+                using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extenstion), FileMode.Create))
+                {
+                    file.CopyTo(fileStreams);
+                }
+
+                // obj.PhotoPath = @"\Imag\Product\" + fileName + extenstion;
+
+                Employee newEmployee = new Employee
+                {
+                    Name = model.Name,
+                    Email = model.Email,
+                    Department = model.Department,
+                    PhotoPath = @"\Img\" + fileName + extenstion
+                };
+
+                _employeeRepository.Add(newEmployee);
+                return RedirectToAction("Details", new { id = newEmployee.Id });
+            }
             return View();
-            //return RedirectToAction("Details",new { id = _employeeRepository.Add(employee).Id});
         }
+
+        //return RedirectToAction("Details",new { id = _employeeRepository.Add(employee).Id});
+
         public IActionResult Details(int? id)
         {
-            return View(_employeeRepository.GetEmployee(id??1));
+            return View(_employeeRepository.GetEmployee(id ?? 1));
         }
 
 
@@ -48,3 +80,4 @@ namespace EmployeeManagementSystem.Controllers
         }
     }
 }
+

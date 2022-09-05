@@ -19,7 +19,6 @@ namespace EmployeeManagementSystem.Controllers
         private IEmployeeRepository _employeeRepository;
         private readonly IWebHostEnvironment webHostEnvironment;
 
-        [Obsolete]
         public HomeController(IEmployeeRepository employeeRepository, IWebHostEnvironment webHostEnvironment)
         {
             _employeeRepository = employeeRepository;
@@ -64,8 +63,21 @@ namespace EmployeeManagementSystem.Controllers
             }
             return View();
         }
+        //GET Edit
+        public IActionResult Edit (int? id)
+        {
+            Employee employee = _employeeRepository.GetEmployee(id??0);
+            EmployeeEditViewModel employeeEditViewModel = new EmployeeEditViewModel
+            {
+                Id = employee.Id,
+                Name = employee.Name,
+                Email = employee.Email,
+                Department = employee.Department,
+                ExistingPhotoPath = employee.PhotoPath
+            };
+            return View(employeeEditViewModel);
+        }
 
-        //return RedirectToAction("Details",new { id = _employeeRepository.Add(employee).Id});
 
         public IActionResult Details(int? id)
         {

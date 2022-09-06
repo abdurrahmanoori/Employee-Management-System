@@ -78,6 +78,43 @@ namespace EmployeeManagementSystem.Controllers
             return View(employeeEditViewModel);
         }
 
+        //POST Edit
+        [HttpPost]
+        public IActionResult Edit(EmployeeEditViewModel employeeEditViewModel, IFormFile file)
+        {
+            string wwwRootPath = webHostEnvironment.WebRootPath;
+            if(file != null)
+            {
+                string fileName = Guid.NewGuid().ToString();
+                var uploads = Path.Combine(wwwRootPath, @"img");
+                var extension = Path.GetExtension(file.FileName);
+                if(employeeEditViewModel.ExistingPhotoPath != null)
+                {
+                    var oldImagePath = Path.Combine(wwwRootPath, employeeEditViewModel.ExistingPhotoPath.Trim('\\'));
+                    if (System.IO.File.Exists(oldImagePath))
+                    {
+                        System.IO.File.Delete(oldImagePath);
+                    }
+                }
+                using(var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
+                {
+                    file.CopyTo(fileStreams);
+                }
+                employeeEditViewModel.ExistingPhotoPath = @"img\" + fileName + extension;
+            }
+            Employee employee = new Employee
+            {
+                Id = employeeEditViewModel.Id,
+                Name = employeeEditViewModel.Name,
+                Email = employeeEditViewModel.Email,
+                PhotoPath = employeeEditViewModel.ExistingPhotoPath,
+                Department = employeeEditViewModel.Department
+            };
+            //_employeeRepository.Add(employee);
+            _employeeRepository.Update(employee);
+            
+            return RedirectToAction("Index");
+        }
 
         public IActionResult Details(int? id)
         {

@@ -3,10 +3,10 @@
     ViewData["Title"] = "Edit";
     var photoPath =(Model.ExistingPhotoPath ?? "noimage.png");
 }
-<h1 class="text-white btn btn-dark">Edit</h1>
-
+<h1 class="display-2">Edit</h1>
+@photoPath
 <form enctype="multipart/form-data" asp-controller="Home" asp-action="Edit" method="post">
-    <input hidden asp-for="Id" />
+    @*<input hidden asp-for="Id" />*@
     <input hidden asp-for="ExistingPhotoPath" />
 
     <div class="form-group">
@@ -39,5 +39,4 @@
         <button type="submit" class="btn btn-primary">Update</button>
         <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Cancel</a>
     </div>
-
 </form>

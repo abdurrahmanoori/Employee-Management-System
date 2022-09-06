@@ -118,7 +118,14 @@ namespace EmployeeManagementSystem.Controllers
 
         public IActionResult Details(int? id)
         {
-            return View(_employeeRepository.GetEmployee(id ?? 1));
+            Employee employee = _employeeRepository.GetEmployee(id.Value);
+            if(employee == null)
+            {
+                Response.StatusCode = 404;
+                return View("EmployeeNotFound", id);
+            }
+
+            return View(employee);
         }
 
 

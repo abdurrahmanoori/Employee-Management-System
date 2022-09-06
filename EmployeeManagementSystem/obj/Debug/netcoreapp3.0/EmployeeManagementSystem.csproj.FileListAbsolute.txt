@@ -126,3 +126,4 @@ F:\7th Semester\Advance Web Development\Asp.Net MVC Core\EmployeeManagementSyste
 F:\7th Semester\Advance Web Development\Asp.Net MVC Core\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\netcoreapp3.0\EmployeeManagementSystem.RazorTargetAssemblyInfo.cs
 F:\7th Semester\Advance Web Development\Asp.Net MVC Core\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\netcoreapp3.0\EmployeeManagementSystem.Views.pdb
 F:\7th Semester\Advance Web Development\Asp.Net MVC Core\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\netcoreapp3.0\EmployeeManagementSystem.csproj.CopyComplete
+F:\7th Semester\Advance Web Development\Asp.Net MVC Core\EmployeeManagementSystem\EmployeeManagementSystem\obj\Debug\netcoreapp3.0\Razor\Views\Home\EmployeeNotFound.cshtml.g.cs

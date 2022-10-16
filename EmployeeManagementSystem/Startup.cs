@@ -30,7 +30,17 @@ namespace EmployeeManagementSystem
                 options => options.UseSqlServer(Configuration.GetConnectionString("EmployeeDBConnection")));
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>();
+
+            services.Configure<IdentityOptions>(option =>
+            {
+                option.Password.RequiredLength = 3;
+                option.Password.RequireDigit = false;
+                option.Password.RequireUppercase = false;
+            });
+
+
             services.AddControllersWithViews();
+
             //services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();
             services.AddScoped<IEmployeeRepository, SQLEmployeeRepository>();
         }
